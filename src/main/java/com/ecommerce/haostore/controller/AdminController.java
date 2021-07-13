@@ -215,5 +215,5 @@ public class AdminController {
             return "404";
         }
 
-    }//form edit product, fill old data into form
+    }
 }

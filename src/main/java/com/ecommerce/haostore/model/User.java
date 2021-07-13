@@ -36,7 +36,7 @@ public class User {
             )
     private List<Role> roles;
 
-    //custom lai constructor
+  
     public User(){}
 
     public User(User user) {

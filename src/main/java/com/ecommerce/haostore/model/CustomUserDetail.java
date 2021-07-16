@@ -20,12 +20,9 @@ public class CustomUserDetail extends User implements UserDetails {
         super.getRoles().forEach(role -> {
             authorityList.add(new SimpleGrantedAuthority(role.getName()));
         });
-//        code tuong duong:
-//        for (Role role: super.getRoles()) {
-//            authorityList.add(new SimpleGrantedAuthority(role.getName()));
-//        }
+
         return authorityList;
-    } //load menu role cho GrantedAuthority
+    } 
 
     @Override
     public String getUsername() {

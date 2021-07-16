@@ -41,7 +41,7 @@ public class HomeController {
     public String home(Model model){
         model.addAttribute("cartCount", GlobalData.cart.size());
         return "index";
-    } //index
+    } 
     @GetMapping("/users/add")
     public String updateUser(Model model){
         UserDTO currentUser = new UserDTO();
@@ -59,7 +59,7 @@ public class HomeController {
                 roleIds.add(item.getId());
             }
             currentUser.setRoleIds(roleIds);
-        }//get current User runtime
+        }
 
         model.addAttribute("userDTO", currentUser);
         return "userRoleAdd";

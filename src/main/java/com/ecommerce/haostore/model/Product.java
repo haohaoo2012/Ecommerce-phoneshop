@@ -17,6 +17,12 @@ public class Product {
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "feedback_id", referencedColumnName = "feedback_id")
+    private  Feedback feedback;
+
+
     private double price;
 
     private double weight;

@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                
+                //permit all url
                 .authorizeRequests()
                 .antMatchers("/", "/shop/**", "/forgotpassword", "/register", "/login").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
@@ -33,13 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
 
-              
+                //google authen
                 .and()
                 .oauth2Login()
                 .loginPage("/login")
                 .successHandler(googleOAuth2SuccessHandler)
 
-               
+                //check login
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error= true")
 
-            
+                //when you logout
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -56,11 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
 
-             
+                //declare exeption
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
 
-              
+                //thymeleaf already has token, so disable csrf
                 .and()
                 .csrf()
                 .disable();
@@ -85,5 +85,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/productImages/**",
                 "/css/**",
                 "/js/**");
-    }
+    }//bo qua authen cac package nay
 }
